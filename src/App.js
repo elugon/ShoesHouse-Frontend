@@ -8,6 +8,8 @@ import Signup from './views/auth/Signup';
 import Login from './views/auth/Login';
 import PrivateView from './views/PrivateView';
 import IsPrivate from './components/IsPrivate';
+import HomeShoes from './views/shoes/Home'
+import OneShoe from './views/shoes/oneShoe'
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/private" element={<IsPrivate><PrivateView/></IsPrivate>}/>
         <Route path="*" element={<ErrorPage />} />
+        <Route path="/shoes" element={<HomeShoes />} />
+        <Route path="/shoes/:id" element={<OneShoe />} />
+
       </Routes>
     </div>
   );
