@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 
 export default function OneShoe() {
 
+  const navigate = useNavigate();
   const [shoe, setShoe] = useState()
   const { id } = useParams();
 
@@ -21,10 +22,15 @@ export default function OneShoe() {
   getData();
 }, [id])
 
+const goToComments = (e) => {
+  navigate(`/comments/${id}`);
+}
+
+
   return (
     <div>
       {shoe && 
-        <div><img src={shoe.media[0].thumbUrl} alt="shoe" className='shoe-size'/><p>{shoe.retailPrice}</p></div>
+        <div><img src={shoe.media[0].thumbUrl} alt="shoe" className='shoe-size'/><p>Select Size:{` ${shoe.size} `}</p><p>{shoe.retailPrice}</p><p>Add to car</p><p onClick={goToComments}>See the reviews!</p></div>
       }
     </div>
   )
