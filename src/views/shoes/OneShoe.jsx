@@ -30,7 +30,12 @@ const goToComments = (e) => {
   return (
     <div>
       {shoe && 
-        <div><img src={shoe.media[0].thumbUrl} alt="shoe" className='shoe-size'/><p>Select Size:{` ${shoe.size} `}</p><p>{shoe.retailPrice}</p><p>Add to car</p><p onClick={goToComments}>See the reviews!</p></div>
+        <div>
+        <img src={shoe.media[0].thumbUrl} alt="shoe" className='shoe-size'/>
+        <p>Select Size:{` ${shoe.size} `}</p>
+        <p>{shoe.retailPrice}</p>
+        <p>Add to car</p>
+        <p onClick={goToComments}>See the reviews!</p></div>
       }
     </div>
   )

@@ -35,16 +35,23 @@ const filter = (brand) => {
 }
 
   return (
-    <div>
-      <div><img src={nikeIcon} alt='brand nike' onClick={() => filter('Nike')}/></div>
-      <div><img src={adidasIcon} alt='brand adidas' onClick={() => filter('adidas')}/></div>
-      <div><img src={jordanIcon} alt='brand jordan' onClick={() => filter('Jordan')}/></div>
-      <div><img src={newBalanceIcon} alt='brand new balance' onClick={() => filter('New Balance')}/></div>
-
-
+    <>
+    <div className='flex items-center place-content-between m-2 px-10'>
+      <div><img src={nikeIcon} className='h-12 w-12' alt='brand nike' onClick={() => filter('Nike')}/></div>
+      <div><img src={adidasIcon} className='h-12 w-12' alt='brand adidas' onClick={() => filter('adidas')}/></div>
+      <div><img src={jordanIcon} className='h-12 w-13' alt='brand jordan' onClick={() => filter('Jordan')}/></div>
+      <div><img src={newBalanceIcon} className='h-12 w-13' alt='brand new balance' onClick={() => filter('New Balance')}/></div>
+    </div>
+    <div className='flex flex-wrap justify-center'>
       {shoes && shoes.map(shoe => {
-        return <div key={shoe._id}><p><Link to={`/shoes/${shoe._id}`}>{shoe.name}</Link></p><img src={shoe.media[0].thumbUrl} alt="shoe" className='shoe-size'/><p>{shoe.retailPrice}</p></div>
+        return <div key={shoe._id} className='h-13 w-13 rounded border-solid border-zinc-300 border-2 m-2'>
+        <img src={shoe.media[0].thumbUrl} alt="shoe" className='m-auto'/>
+        <p><Link to={`/shoes/${shoe._id}`} className='pl-1 pb-1'>{shoe.name}</Link></p>
+        <p className='pl-1 pb-1'>{`${shoe.retailPrice}€`}</p>
+        </div>
       })}
     </div>
+    
+    </>
   )
 }
