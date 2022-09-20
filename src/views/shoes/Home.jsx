@@ -45,7 +45,7 @@ const filter = (brand) => {
     <div className='flex flex-wrap justify-center transition-transform duration-500 delay-500'>
       {shoes && shoes.map(shoe => {
         return <div key={shoe._id} className='h-13 w-13 rounded border-solid border-zinc-300 border-2 m-2 transition-transform duration-500 delay-500'>
-        <img src={shoe.media[0].thumbUrl} alt="shoe" className='m-auto'/>
+        <Link to={`/shoes/${shoe._id}`}><img src={shoe.media[0].thumbUrl} alt="shoe" className='m-auto'/></Link>
         <p><Link to={`/shoes/${shoe._id}`} className='pl-1 pb-1'>{shoe.name}</Link></p>
         <p className='pl-1 pb-1'>{`${shoe.retailPrice}€`}</p>
         </div>
