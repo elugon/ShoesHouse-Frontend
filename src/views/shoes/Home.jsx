@@ -36,15 +36,15 @@ const filter = (brand) => {
 
   return (
     <>
-    <div className='flex items-center place-content-between m-2 px-10'>
-      <div><img src={nikeIcon} className='h-12 w-12' alt='brand nike' onClick={() => filter('Nike')}/></div>
-      <div><img src={adidasIcon} className='h-12 w-12' alt='brand adidas' onClick={() => filter('adidas')}/></div>
-      <div><img src={jordanIcon} className='h-12 w-13' alt='brand jordan' onClick={() => filter('Jordan')}/></div>
-      <div><img src={newBalanceIcon} className='h-12 w-13' alt='brand new balance' onClick={() => filter('New Balance')}/></div>
+    <div className='flex items-center place-content-between m-2 px-10 dark:bg-slate-900'>
+      <div><img src={nikeIcon} className='h-12 w-12 dark:bg-white dark:rounded dark:p-1' alt='brand nike' onClick={() => filter('Nike')}/></div>
+      <div><img src={adidasIcon} className='h-12 w-12 dark:bg-white dark:rounded dark:p-1' alt='brand adidas' onClick={() => filter('adidas')}/></div>
+      <div><img src={jordanIcon} className='h-12 w-13 dark:bg-white dark:rounded dark:p-1' alt='brand jordan' onClick={() => filter('Jordan')}/></div>
+      <div><img src={newBalanceIcon} className='h-12 w-13 dark:bg-white dark:rounded dark:p-1' alt='brand new balance' onClick={() => filter('New Balance')}/></div>
     </div>
-    <div className='flex flex-wrap justify-center transition-transform duration-500 delay-500'>
+    <div className='flex flex-wrap justify-center'>
       {shoes && shoes.map(shoe => {
-        return <div key={shoe._id} className='h-13 w-13 rounded border-solid border-zinc-300 border-2 m-2 transition-transform duration-500 delay-500'>
+        return <div key={shoe._id} className='h-13 w-13 rounded border-solid border-zinc-300 border-2 m-2 dark:bg-white'>
         <Link to={`/shoes/${shoe._id}`}><img src={shoe.media[0].thumbUrl} alt="shoe" className='m-auto'/></Link>
         <p><Link to={`/shoes/${shoe._id}`} className='pl-1 pb-1'>{shoe.name}</Link></p>
         <p className='pl-1 pb-1'>{`${shoe.retailPrice}€`}</p>

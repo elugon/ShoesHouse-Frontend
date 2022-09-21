@@ -48,12 +48,12 @@ const goToComments = (e) => {
     <div>
       {shoe && 
         <>
-        <div className='h-13 w-13 rounded border-solid border-zinc-300 border-2 m-2 p-2 bg-contain'>
-        <img src={shoe.media[0].thumbUrl} alt="shoe" className='m-auto'/>
-        <p className='w-24 m-2'>Size: {<Select options={options}/>}</p>
-        <p className='pl-3 pb-1'>{`${shoe.retailPrice}€`}</p>
+        <div className='h-13 w-13 rounded border-solid border-zinc-300 border-2 m-2 p-2 bg-contain dark:bg-slate-600 dark:border-slate-400'>
+        <img src={shoe.media[0].thumbUrl} alt="shoe" className='m-auto dark:rounded'/>
+        <p className='w-24 m-2 dark:text-slate-200'>Size: {<Select options={options} className='dark:text-black'/>}</p>
+        <p className='pl-3 pb-1 dark:text-slate-200'>{`${shoe.retailPrice}€`}</p>
         <button className='pl-2 pb-2 m-1 bg-red-500 px-4 py-2 text-white rounded-full'>Add to car</button>
-        <p onClick={goToComments} className='pl-2 pb-2 pt-2'>See the reviews!</p></div>
+        <p onClick={goToComments} className='pl-2 pb-2 pt-2 dark:text-slate-200'>See the reviews!</p></div>
         <div className='h-13 w-13 rounded border-solid border-zinc-300 border-2 m-2'>
           <img src={advertising[Math.floor(Math.random() * (advertising.length-1))]} alt='advertising gif' className='m-auto'/>
         </div>
