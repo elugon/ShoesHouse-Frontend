@@ -6,14 +6,16 @@ import { AiOutlineShopping } from "react-icons/ai"
 import { AiOutlineRollback } from "react-icons/ai"
 import { GiExitDoor } from "react-icons/gi"
 import InitialsAvatar from 'react-initials-avatar';
+import Switcher from './Switcher';
 
 
 export default function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
-    <div className='flex items-center px-2 border-solid border-2 rounded h-14 m-2'>
+    <div className='flex items-center px-2 border-solid border-2 rounded h-14 m-2 dark:bg-slate-800'>
       <nav className='flex w-full h-full items-center place-content-between font-serif'>
+      <Switcher />
         {user && <InitialsAvatar name={user.username} className='selected rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider text-blue-500 border-solid border-2 border-blue-500' /> }
         <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/">{<img src={shoesHouseLogo} alt='logo of ecommerce' className='object-contain w-12 h-12'></img>}</NavLink>
         <NavLink className={(element) => element.isActive ? 'selected' : ''} to="/shoes">{<AiOutlineShopping className='w-7 h-7'/>}</NavLink>
