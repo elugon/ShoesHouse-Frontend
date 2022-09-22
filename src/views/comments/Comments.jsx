@@ -6,19 +6,24 @@ import ReactStars from "react-rating-stars-component";
 
 
 function Comments() {
-
- /*  const ratingChanged = (newRating) => {
-    console.log(newRating);
-  }; */
+  
     const storedToken= localStorage.getItem('authToken')
     const [comments, setComments] = useState(null)
     const [newComment, setNewComment] = useState({
         text: '',
-        rating: ''
+        rating: 0
     })
     const { id } = useParams();
     const navigate = useNavigate();
 
+    const ratingChanged = (newRating) => {
+      setNewComment(prev => {
+        return {
+          ...prev,
+          rating: newRating
+        }
+      })
+    }
 
     const handleChange = (e) => {
         setNewComment(prev => {
@@ -33,7 +38,7 @@ function Comments() {
         const getData = async () => {
           try {
             const response = await axios.get(`http://localhost:8000/api/v1/comments/${id}`);
-            if(response.data.data.response.status === 404){
+            if(response.data.data.length === 0){
                 setComments(null)
             } else {
                 setComments(response.data.data)
@@ -48,10 +53,16 @@ function Comments() {
       }, [id])
 
       const handleSubmit = async (e) => {
+        console.log(newComment)
         e.preventDefault();
         try {
-          await axios.post(`${process.env.REACT_APP_API_URL}/comments/${id}`, { text:newComment.text, rating:newComment.rating }, { headers: { Authorization:`Bearer ${storedToken}` }});  
-          navigate('/login');
+          await axios.post(`${process.env.REACT_APP_API_URL}/comments/${id}`, { text:newComment.text, rating:newComment.rating }, { headers: { Authorization:`Bearer ${storedToken}` }});
+          const response = await axios.get(`http://localhost:8000/api/v1/comments/${id}`);
+          if(response.data.data.length === 0){
+              setComments(null)
+          } else {
+              setComments(response.data.data)
+          } 
         } catch (error) {
             console.log(error)        
         }
@@ -74,9 +85,9 @@ function Comments() {
       <div className="bg-white py-8 px-6 shadow rounded-lg sm:px-10 dark:bg-slate-400">
       <form onSubmit={handleSubmit}>
         <label className="block text-sm font-medium text-gray-700 dark:text-slate-100">What did you like or dislike?</label>
-        <input required type="text" name="text" value={setNewComment.text} onChange={handleChange} className='w-full border-gray-300 p-2 border-2 rounded-lg shadow-sm focus:border-2 focus:rounded-lg focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none dark:bg-slate-300'/>
+        <input required type="text" name="text" value={newComment.text} onChange={handleChange} className='w-full border-gray-300 p-2 border-2 rounded-lg shadow-sm focus:border-2 focus:rounded-lg focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none dark:bg-slate-300'/>
         <label className="block text-sm font-medium text-gray-700 dark:text-slate-100 mt-2">Your overall rating of this product</label>
-        <label>{<ReactStars count={5} onChange={setNewComment.rating} value={setNewComment.rating} size={24} activeColor="#ffd700"/>}</label>
+        <label>{<ReactStars count={5} onChange={ratingChanged} value={newComment.rating} size={24} activeColor="#ffd700"/>}</label>
         <button type="submit" className='p-auto pb-2 m-1 mt-3 bg-red-500 px-4 py-2 text-white rounded-full'>Make a review!</button>
       </form>
     </div>
