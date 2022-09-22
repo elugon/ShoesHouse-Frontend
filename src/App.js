@@ -14,7 +14,7 @@ import AllComments from './views/comments/Comments'
 
 function App() {
   return (
-    <div className="App dark:bg-slate-900">
+    <div className="App dark:bg-slate-900 pt-2 pb-2">
       <Toaster/>
       <Navbar />
       <Routes>

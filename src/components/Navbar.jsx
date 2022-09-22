@@ -13,7 +13,7 @@ export default function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
-    <div className='flex items-center px-2 border-solid border-2 rounded h-14 m-2 dark:bg-slate-600 dark:border-slate-400'>
+    <div className='flex items-center px-2 border-solid border-2 rounded h-14 ml-2 mr-2 mb-2 dark:bg-slate-600 dark:border-slate-400'>
       <nav className='flex w-full h-full items-center place-content-between font-serif'>
       <Switcher />
         {user && <InitialsAvatar name={user.username} className='selected rounded-full py-2 px-3 uppercase text-xs font-bold cursor-pointer tracking-wider text-blue-500 border-solid border-2 border-blue-500' /> }

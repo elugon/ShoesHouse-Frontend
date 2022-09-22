@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState, useContext } from 'react'
+import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
-import shoesHouseLogo from '../../img/shoesHouseLogo.png'
+import shoesHouseLogo from '../../img/shoesHouseLogo.png';
 import ReactStars from "react-rating-stars-component";
+import { AuthContext } from '../../context/AuthContext';
+
 
 
 function Comments() {
-  
+
+    const { user } = useContext(AuthContext);
+    console.log(user)
     const storedToken= localStorage.getItem('authToken')
     const [comments, setComments] = useState(null)
     const [newComment, setNewComment] = useState({
         text: '',
-        rating: 0
+        rating: 0,
+        user_name:''
     })
     const { id } = useParams();
     const navigate = useNavigate();
@@ -37,14 +42,12 @@ function Comments() {
     useEffect(() => {
         const getData = async () => {
           try {
-            const response = await axios.get(`http://localhost:8000/api/v1/comments/${id}`);
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/comments/${id}`);
             if(response.data.data.length === 0){
                 setComments(null)
             } else {
                 setComments(response.data.data)
             }
-            
-            console.log(response.data.data)
           } catch (error) {
             console.error(error)
           }
@@ -56,8 +59,8 @@ function Comments() {
         console.log(newComment)
         e.preventDefault();
         try {
-          await axios.post(`${process.env.REACT_APP_API_URL}/comments/${id}`, { text:newComment.text, rating:newComment.rating }, { headers: { Authorization:`Bearer ${storedToken}` }});
-          const response = await axios.get(`http://localhost:8000/api/v1/comments/${id}`);
+          await axios.post(`${process.env.REACT_APP_API_URL}/comments/${id}`, { text:newComment.text, rating:newComment.rating, user_name:user.username }, { headers: { Authorization:`Bearer ${storedToken}` }});
+          const response = await axios.get(`${process.env.REACT_APP_API_URL}/comments/${id}`);
           if(response.data.data.length === 0){
               setComments(null)
           } else {
@@ -78,7 +81,16 @@ function Comments() {
       Do you want to go back?</p>
       <h1 className="text-center text-sm font-medium text-indigo-600 dark:text-cyan-400" onClick={() => navigate(-1)}> Click here!</h1>
     <div>{comments && comments.map(ele =>{
-        return <p>{ele.text}</p>})}
+        return (
+          
+          <div key={ele._id} className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+            <div className="bg-white py-8 px-6 shadow rounded-lg sm:px-10 dark:bg-slate-400">
+              <div className='mb-2  w-full border-gray-300 p-2 border-2 rounded-lg shadow-sm dark:bg-slate-300'>{ele.text}</div>
+                <label>{<ReactStars count={5} value={ele.rating} size={24} activeColor="#ffd700"/>}</label>
+              </div>
+            </div>
+          
+          )})}
     <div>{!comments && <p>No comments yet</p>}</div>
     </div>
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
