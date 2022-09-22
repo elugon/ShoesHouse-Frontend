@@ -56,7 +56,7 @@ export default function Login() {
         <label className="block text-sm font-medium text-gray-700 dark:text-slate-100">Password</label>
         <input required type="password" name="password" value={user.password} onChange={handleChange} className='w-full border-gray-300 p-2 border-2 rounded-lg shadow-sm focus:border-2 focus:rounded-lg focus:border-indigo-500 focus:ring-indigo-500 focus:outline-none dark:bg-slate-200'/>
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-        <button type="submit" className='pl-2 pb-2 m-auto bg-blue-500 px-4 py-2 text-white rounded-full'>Log in </button>
+        <button type="submit" className='p-auto pb-2 m-auto bg-blue-500 px-4 py-2 text-white rounded-full'>Log in </button>
       </form>
       </div>
     </div>
