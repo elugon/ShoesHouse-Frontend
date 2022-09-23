@@ -4,13 +4,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 import shoesHouseLogo from '../../img/shoesHouseLogo.png';
 import ReactStars from "react-rating-stars-component";
 import { AuthContext } from '../../context/AuthContext';
+import toast from 'react-hot-toast';
+
 
 
 
 function Comments() {
 
     const { user } = useContext(AuthContext);
-    console.log(user)
     const storedToken= localStorage.getItem('authToken')
     const [comments, setComments] = useState(null)
     const [newComment, setNewComment] = useState({
@@ -58,6 +59,9 @@ function Comments() {
       const handleSubmit = async (e) => {
         console.log(newComment)
         e.preventDefault();
+        if(!user){ 
+         return toast.error('Please log in first!')
+        }
         try {
           await axios.post(`${process.env.REACT_APP_API_URL}/comments/${id}`, { text:newComment.text, rating:newComment.rating, user_name:user.username }, { headers: { Authorization:`Bearer ${storedToken}` }});
           const response = await axios.get(`${process.env.REACT_APP_API_URL}/comments/${id}`);
@@ -89,6 +93,7 @@ function Comments() {
                 <label>{<ReactStars count={5} value={ele.rating} size={24} activeColor="#ffd700"/>}</label>
               </div>
             </div>
+            
           
           )})}
     <div>{!comments && <p>No comments yet</p>}</div>

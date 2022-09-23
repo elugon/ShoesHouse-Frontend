@@ -16,7 +16,7 @@ export default function HomeShoes() {
   useEffect(() => {
   const getData = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/v1/shoes')
+      const response = await axios.get(`${process.env.REACT_APP_API_URL}/shoes`)
       setOriginalShoes(response.data.data);
       setShoes(response.data.data);
     } catch (error) {
@@ -25,15 +25,10 @@ export default function HomeShoes() {
   }
   getData();
 }, [])
-console.log(shoes)
-
 const filter = (brand) => {
-  //setShoes(originalShoes)
   const newShoes = originalShoes.filter(ele => ele.brand === brand)
   setShoes(newShoes)
-  console.log(newShoes)
 }
-
   return (
     <>
     <div className='flex items-center place-content-between m-2 px-10 dark:bg-slate-900'>
@@ -51,7 +46,6 @@ const filter = (brand) => {
         </div>
       })}
     </div>
-    
     </>
   )
 }
