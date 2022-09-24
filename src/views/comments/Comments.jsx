@@ -6,9 +6,6 @@ import ReactStars from "react-rating-stars-component";
 import { AuthContext } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
 
-
-
-
 function Comments() {
 
     const { user } = useContext(AuthContext);

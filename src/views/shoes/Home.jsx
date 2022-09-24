@@ -6,8 +6,6 @@ import jordanIcon from '../../img/jordanIcon.png'
 import adidasIcon from '../../img/adidasIcon.png'
 import newBalanceIcon from '../../img/newBalanceIcon.png'
 
-
-
 export default function HomeShoes() {
 
   const [shoes, setShoes] = useState()

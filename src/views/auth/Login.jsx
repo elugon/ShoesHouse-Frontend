@@ -5,7 +5,6 @@ import { AuthContext } from '../../context/AuthContext';
 import { NavLink, useNavigate } from 'react-router-dom';
 import shoesHouseLogo from '../../img/shoesHouseLogo.png'
 
-
 export default function Login() {
   const { storeToken, authenticateUser } = useContext(AuthContext);
   const [user, setUser] = useState({

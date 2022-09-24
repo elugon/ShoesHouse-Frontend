@@ -11,6 +11,7 @@ import IsPrivate from './components/IsPrivate';
 import HomeShoes from './views/shoes/Home'
 import OneShoe from './views/shoes/OneShoe'
 import AllComments from './views/comments/Comments'
+import Shoppingcar from './views/shoppingCar/ShoppingCar';
 
 function App() {
   return (
@@ -26,8 +27,7 @@ function App() {
         <Route path="/shoes" element={<HomeShoes />} />
         <Route path="/shoes/:id" element={<OneShoe />} />
         <Route path="/comments/:id" element={<AllComments />} />
-
-
+        <Route path="/shoppingcar" element={<Shoppingcar />} />
       </Routes>
     </div>
   );
