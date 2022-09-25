@@ -28,7 +28,6 @@ export default function OneShoe() {
       setShoe(response.data.data);
       const optionsToSelect=response.data.data.size.map(shoe => ({value: shoe, label: shoe}))
       setOptions(optionsToSelect)
-      console.log(response.data.data)
     } catch (error) {
       console.error(error)
     }
