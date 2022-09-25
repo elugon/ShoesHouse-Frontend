@@ -29,7 +29,7 @@ const filter = (brand) => {
 }
   return (
     <>
-    <div className='flex items-center place-content-between m-2 px-10 dark:bg-slate-900'>
+    <div className='flex items-center place-content-between mx-4 md:mx-16 lg:mx-20 dark:bg-slate-900'>
       <div><img src={nikeIcon} className='h-12 w-12 dark:bg-white dark:rounded dark:p-1' alt='brand nike' onClick={() => filter('Nike')}/></div>
       <div><img src={adidasIcon} className='h-12 w-12 dark:bg-white dark:rounded dark:p-1' alt='brand adidas' onClick={() => filter('adidas')}/></div>
       <div><img src={jordanIcon} className='h-12 w-13 dark:bg-white dark:rounded dark:p-1' alt='brand jordan' onClick={() => filter('Jordan')}/></div>
