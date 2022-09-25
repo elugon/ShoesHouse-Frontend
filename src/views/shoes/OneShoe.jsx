@@ -12,6 +12,7 @@ import neymar1 from '../../gif/Neymar1.gif'
 import neymar2 from '../../gif/Neymar2.gif'
 import neymar3 from '../../gif/Neymar3.gif'
 import puma1 from '../../gif/Puma1.gif'
+import { motion } from 'framer-motion';
 
 export default function OneShoe() {
 
@@ -40,7 +41,7 @@ const goToComments = (e) => {
 }
 
   return (
-    <div>
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
       {shoe && 
         <>
         <div className='h-13 w-13 rounded border-solid border-zinc-300 border-2 m-2 p-2 bg-contain dark:bg-slate-600 dark:border-slate-400'>
@@ -54,6 +55,6 @@ const goToComments = (e) => {
         </div>
         </>
       }
-    </div>
+    </motion.div>
   )
 }

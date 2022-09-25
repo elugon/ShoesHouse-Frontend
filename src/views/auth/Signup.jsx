@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import shoesHouseLogo from '../../img/shoesHouseLogo.png'
+import { motion } from 'framer-motion';
 
 export default function Signup() {
   const [user, setUser] = useState({
@@ -43,7 +44,7 @@ export default function Signup() {
 
   return (
     <>
-    <div className='min-h-screen bg-gray-100 flex flex-col justify-center py-12 px-6 lg:px-8 m-2 rounded dark:bg-slate-600 dark:m-2 dark:rounded'>
+    <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} className='min-h-screen bg-gray-100 flex flex-col justify-center py-12 px-6 lg:px-8 m-2 rounded dark:bg-slate-600 dark:m-2 dark:rounded'>
       <div className=" sm:mx-auto sm:w-full sm:max-w-md">
     <img className="mx-auto h-18 w-auto" src={shoesHouseLogo} alt="shoes-house logo" />
     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900 dark:text-slate-200">Create your account</h2>
@@ -68,7 +69,7 @@ export default function Signup() {
       </form>
       </div>
     </div>
-    </div>
+    </motion.div>
     </>
   )
 }

@@ -5,12 +5,29 @@ import nikeIcon from '../../img/nikeIcon.png'
 import jordanIcon from '../../img/jordanIcon.png'
 import adidasIcon from '../../img/adidasIcon.png'
 import newBalanceIcon from '../../img/newBalanceIcon.png'
+import { motion } from "framer-motion";
 
 export default function HomeShoes() {
 
+  const container = {
+    hidden: { opacity: 1 },
+    show: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.5,
+        staggerChildren: 0.6
+      }
+    }
+  }
+  
+  const animatedItem = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 }
+  }
+
   const [shoes, setShoes] = useState()
   const [originalShoes, setOriginalShoes] = useState()
-
+ 
   useEffect(() => {
   const getData = async () => {
     try {
@@ -35,15 +52,18 @@ const filter = (brand) => {
       <div><img src={jordanIcon} className='h-12 w-13 dark:bg-white dark:rounded dark:p-1' alt='brand jordan' onClick={() => filter('Jordan')}/></div>
       <div><img src={newBalanceIcon} className='h-12 w-13 dark:bg-white dark:rounded dark:p-1' alt='brand new balance' onClick={() => filter('New Balance')}/></div>
     </div>
-    <div className='flex flex-wrap justify-center'>
-      {shoes && shoes.map(shoe => {
-        return <div key={shoe._id} className='h-13 w-13 rounded border-solid border-zinc-300 border-2 m-2 dark:bg-white'>
+    <React.Fragment>
+       {shoes && <motion.ul variants={container} initial="hidden" animate="show" className='flex flex-wrap justify-center'>
+       {shoes.map( (shoe) => {
+        return <motion.li variants={animatedItem} key={shoe._id} className='h-13 w-13 rounded border-solid border-zinc-300 border-2 m-2 dark:bg-white'>
         <Link to={`/shoes/${shoe._id}`}><img src={shoe.media[0].thumbUrl} alt="shoe" className='m-auto'/></Link>
         <p><Link to={`/shoes/${shoe._id}`} className='pl-1 pb-1'>{shoe.name}</Link></p>
         <p className='pl-1 pb-1'>{`${shoe.retailPrice}€`}</p>
-        </div>
-      })}
-    </div>
+        </motion.li>
+       })}
+    </motion.ul>
+       }
+    </React.Fragment>
     </>
   )
 }

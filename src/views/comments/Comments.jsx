@@ -5,6 +5,7 @@ import shoesHouseLogo from '../../img/shoesHouseLogo.png';
 import ReactStars from "react-rating-stars-component";
 import { AuthContext } from '../../context/AuthContext';
 import toast from 'react-hot-toast';
+import {motion} from 'framer-motion'
 
 function Comments() {
 
@@ -75,7 +76,7 @@ function Comments() {
 
   return (
     <>
-     <div className='min-h-screen bg-gray-100 flex flex-col justify-center py-12 px-6 lg:px-8 m-2 rounded dark:bg-slate-600 dark:m-2 dark:rounded'>
+     <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}} className='min-h-screen bg-gray-100 flex flex-col justify-center py-12 px-6 lg:px-8 m-2 rounded dark:bg-slate-600 dark:m-2 dark:rounded'>
       <div className=" sm:mx-auto sm:w-full sm:max-w-md">
       <img className="mx-auto h-18 w-auto" src={shoesHouseLogo} alt="shoes-house logo" />
     <p className="mt-2 text-center text-sm text-gray-600 max-w dark:text-slate-200">
@@ -107,7 +108,7 @@ function Comments() {
     </div>
       </div>
     </div>
-    </div>
+    </motion.div>
     </>
   )
 }
