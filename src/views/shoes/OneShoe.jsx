@@ -40,21 +40,28 @@ const goToComments = (e) => {
   navigate(`/comments/${id}`);
 }
 
+
+
   return (
-    <motion.div initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
+    <>
+    <motion.article initial={{opacity:0}} animate={{opacity:1}} exit={{opacity:0}}>
       {shoe && 
         <>
         <div className='h-13 w-13 rounded border-solid border-zinc-300 border-2 m-2 p-2 bg-contain dark:bg-slate-600 dark:border-slate-400'>
-        <img src={shoe.media[0].thumbUrl} alt="shoe" className='m-auto dark:rounded'/>
-        <p className='w-24 m-2 dark:text-slate-200'>Size: {<Select options={options} className='dark:text-black'/>}</p>
-        <p className='pl-3 pb-1 dark:text-slate-200'>{`${shoe.retailPrice}€`}</p>
-        <button className='pl-2 pb-2 m-1 bg-red-500 px-4 py-2 text-white rounded-full'>Add to car</button>
-        <p onClick={goToComments} className='pl-2 pb-2 pt-2 dark:text-slate-200 dark:text-cyan-400'>See the reviews!</p></div>
+         <img src={shoe.media[0].thumbUrl} alt="shoe" className='m-auto dark:rounded'/>
+          <div>
+            <h1 className='w-24 m-2 dark:text-slate-200'>Size: {<Select options={options} className='dark:text-black'/>}</h1>
+            <h1 className='pl-3 pb-1 dark:text-slate-200'>{shoe.retailPrice}€</h1>
+            <button className='pl-2 pb-2 m-1 bg-red-500 px-4 py-2 text-white rounded-full'>Add to car</button>
+            <p onClick={goToComments} className='pl-2 pb-2 pt-2 text-dark dark:text-cyan-400'>See the reviews!</p>
+          </div>
+        </div>
         <div className='h-13 w-13 rounded border-solid border-zinc-300 border-2 m-2'>
           <img src={advertising[Math.floor(Math.random() * (advertising.length-1))]} alt='advertising gif' className='m-auto'/>
         </div>
         </>
       }
-    </motion.div>
+    </motion.article>
+    </>
   )
 }
