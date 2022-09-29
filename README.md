@@ -2,7 +2,7 @@
 
 ## Description
 
-This application is called Shoes-House. It is a e-commerce of shoes.
+This application is called Shoes-House. It's a e-Commerce of shoes.
 
 > Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
 ![](src/img/shoesHouseLayout.png)
@@ -10,7 +10,7 @@ This application is called Shoes-House. It is a e-commerce of shoes.
 ---
 ## Instructions
 
-When cloning the project, change the <code>sample.env</code> file name for <code>.env</code>. The project will run on **PORT 3000**.
+When cloning the project, change the <code>sample.env</code> file name for <code>.env</code>. The project will run on **PORT 8000**.
 ```
 REACT_APP_API_URL=http://localhost:8000/api/v1
 
@@ -34,18 +34,23 @@ npm run start
 - User can sign up and create a new account
 - User can login
 - User can log out
+- User can see multiple shoes in order to buy
+
 
 ### Backlog
 
-- User can ...
+- User can view the reviews of a shoe
+- User can post a review of a shoe
+- User can add a shoe to the shopping cart
+- User can delete a shoe of the shopping cart
 
 ---
 
 ## Useful links
 
-- [Presentation slides]()
-- [Backend repository]()
-- [Backend deploy]()
-- [Deployed app]()
+- [Presentation slides](https://slides.com/elurgonzalezr/minimal)
+- [Backend repository](https://github.com/elugon/ShoesHouse-Backend)
+- [Backend deploy](https://shoes-house.herokuapp.com/)
+- [Deployed app](https://shoes-house.netlify.app/)
 
 
