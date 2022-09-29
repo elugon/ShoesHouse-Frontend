@@ -4,7 +4,6 @@
 
 This application is called Shoes-House. It's a e-Commerce of shoes.
 
-> Add a picture (logo, design, actual screen, gif, etc, whichever you prefer.)
 ![](src/img/shoesHouseLayout.png)
 
 ---
