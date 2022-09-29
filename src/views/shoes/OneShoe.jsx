@@ -13,9 +13,14 @@ import neymar2 from '../../gif/Neymar2.gif'
 import neymar3 from '../../gif/Neymar3.gif'
 import puma1 from '../../gif/Puma1.gif'
 import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
+
+
+
 
 export default function OneShoe() {
 
+  const storedToken= localStorage.getItem('authToken')
   const navigate = useNavigate();
   const [shoe, setShoe] = useState()
   const { id } = useParams();
@@ -40,6 +45,16 @@ const goToComments = (e) => {
   navigate(`/comments/${id}`);
 }
 
+const addToCart = async (e) => {
+  e.preventDefault();
+  try {
+    await axios.post(`${process.env.REACT_APP_API_URL}/shoppingcart/${id}`, {},  { headers: { Authorization:`Bearer ${storedToken}` }});
+    toast.success('Shoe Added To The Cart!')
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 
 
   return (
@@ -52,7 +67,7 @@ const goToComments = (e) => {
           <div>
             <h1 className='w-24 m-2 dark:text-slate-200'>Size: {<Select options={options} className='dark:text-black'/>}</h1>
             <h1 className='pl-3 pb-1 dark:text-slate-200'>{shoe.retailPrice}€</h1>
-            <button className='pl-2 pb-2 m-1 bg-red-500 px-4 py-2 text-white rounded-full'>Add to car</button>
+            <button onClick={addToCart} className='pl-2 pb-2 m-1 bg-red-500 px-4 py-2 text-white rounded-full'>Add to car</button>
             <p onClick={goToComments} className='pl-2 pb-2 pt-2 text-dark dark:text-cyan-400'>See the reviews!</p>
           </div>
         </div>
