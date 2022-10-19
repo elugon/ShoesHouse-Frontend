@@ -67,7 +67,7 @@ const addToCart = async (e) => {
           <div>
             <h1 className='w-24 m-2 dark:text-slate-200'>Size: {<Select options={options} className='dark:text-black'/>}</h1>
             <h1 className='pl-3 pb-1 dark:text-slate-200'>{shoe.retailPrice}€</h1>
-            <button onClick={addToCart} className='pl-2 pb-2 m-1 bg-red-500 px-4 py-2 text-white rounded-full'>Add to car</button>
+            <button onClick={addToCart} className='pl-2 pb-2 m-1 bg-red-500 px-4 py-2 text-white rounded-full'>Add to Cart</button>
             <p onClick={goToComments} className='pl-2 pb-2 pt-2 text-dark dark:text-cyan-400'>See the reviews!</p>
           </div>
         </div>
